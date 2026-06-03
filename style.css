@@ -1,0 +1,292 @@
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f2937;
+    padding: 1rem 10%;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: #f3f4f6;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #9ca3af;
+}
+
+.btn-theme {
+    background-color: #374151;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-theme:hover {
+    background-color: #4b5563;
+}
+
+/* --- Layout Main Container --- */
+.container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+    }
+}
+
+.profile-img {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #3498db;
+}
+
+.hero-text h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* --- General Typography Section --- */
+article h2, section h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+/* --- Table Styling --- */
+.edu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+}
+
+.edu-table th, .edu-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.edu-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+/* --- Contact Form Styling --- */
+.contact-form {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   KUSTOM PURE CSS - TODO LIST (SINKRON DENGAN HTML TANPA TAILWIND)
+   ========================================================================== */
+.todo-wrapper {
+    max-width: 28rem;
+    margin: 3rem auto 0 auto;
+    padding: 1.5rem;
+    background-color: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.todo-wrapper h2 {
+    font-size: 1.5rem;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+/* Menjaga input dan button berbaris horizontal */
+.todo-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.todo-input-group input {
+    flex: 1; /* Input memanjang mengambil ruang sisa */
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.todo-input-group input:focus {
+    border-color: #3498db;
+}
+
+/* Tombol Add (Ukurannya pas di samping kanan input, tidak melar!) */
+.todo-input-group button {
+    background-color: #3498db;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    width: auto; /* Kunci utama melumpuhkan warisan tombol global 100% */
+    cursor: pointer;
+}
+
+.todo-input-group button:hover {
+    opacity: 0.9;
+}
+
+/* Tampilan Output List Item */
+#todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: left;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+}
+
+.todo-item.completed {
+    background-color: #f0fdf4;
+    border-color: #bbf7d0;
+}
+
+.todo-item.normal {
+    background-color: #f9fafb;
+}
+
+.todo-text {
+    flex: 1;
+    cursor: pointer;
+}
+
+.todo-text.done {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.todo-delete-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    margin-left: 0.5rem;
+}
+
+.todo-delete-btn:hover {
+    color: #b91c1c;
+}
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 3rem;
+}
+
+.main-footer p {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
