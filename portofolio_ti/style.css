@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+/* --- Custom Properties & Tema Futuristik (Default Gelap) --- */
+:root {
+    --clr-bg: #060713;             /* Deep Space Blue */
+    --clr-surface: rgba(11, 15, 36, 0.7); /* Translucent Neon Card */
+    --clr-surface-alt: rgba(18, 24, 58, 0.5);
+    --clr-nav: rgba(4, 5, 15, 0.85);
+    --clr-accent: #00f2fe;         /* Electric Neon Cyan */
+    --clr-accent-hover: #00a8ff;   /* Digital Blue */
+    --clr-accent-muted: rgba(0, 242, 254, 0.1);
+    --clr-text-primary: #f1f5f9;   /* Slate Light */
+    --clr-text-secondary: #64748b; /* Slate Muted */
+    --clr-text-inverted: #060713;
+    --clr-border: rgba(0, 242, 254, 0.15); /* Soft Cyan Border */
+    --clr-border-strong: rgba(0, 242, 254, 0.4);
+    
+    --radius-sm: 0.5rem;
+    --radius-md: 0.875rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 2rem;
+    
+    --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 20px rgba(0, 242, 254, 0.25);
+    --transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Dark/Cyber Mode Alternatif (Sedikit Lebih Pekat) --- */
+body.dark {
+    --clr-bg: #03040b;
+    --clr-surface: rgba(7, 10, 26, 0.85);
+    --clr-accent: #3b82f6;         /* Royal Blue Glow */
+    --clr-accent-hover: #1d4ed8;
+    --clr-accent-muted: rgba(59, 130, 246, 0.15);
+    --clr-border: rgba(59, 130, 246, 0.2);
+    --clr-border-strong: rgba(59, 130, 246, 0.5);
+    --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Global Reset & Animasi Latar --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--clr-text-primary);
+    background-color: var(--clr-bg);
+    /* Efek Grid Digital & Gradasi Ambient pada Background */
+    background-image: 
+        linear-gradient(rgba(0, 242, 254, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 254, 0.015) 1px, transparent 1px),
+        radial-gradient(at 0% 0%, rgba(0, 242, 254, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.05) 0px, transparent 50%);
+    background-size: 30px 30px, 30px 30px, auto, auto;
+    background-attachment: fixed;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* --- Navigation Bar (Glassmorphism Modern) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--clr-nav);
+    padding: 1.2rem 8%;
+    color: var(--clr-text-primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--clr-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: var(--shadow-glow);
+    letter-spacing: 0.05em;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: var(--clr-text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--clr-accent);
+    background-color: var(--clr-accent-muted);
+    box-shadow: inset 0 0 8px rgba(0, 242, 254, 0.1);
+}
+
+.btn-theme {
+    background-color: transparent;
+    color: var(--clr-text-primary);
+    border: 1px solid var(--clr-border);
+    padding: 0.5rem 1.2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: all var(--transition);
+}
+
+.btn-theme:hover {
+    background-color: var(--clr-accent);
+    color: var(--clr-text-inverted);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--clr-accent);
+}
+
+/* --- Layout Main Container --- */
+.container {
+    max-width: 58rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+/* --- Hero Section (Cyber Grid Header) --- */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, var(--clr-surface), rgba(6, 7, 19, 0.9));
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ornamen lingkaran siber di pojok kanan atas */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--clr-accent-muted) 0%, transparent 70%);
+    border: 1px dashed var(--clr-border);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.profile-img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: var(--radius-lg);
+    object-fit: cover;
+    border: 2px solid var(--clr-accent);
+    box-shadow: var(--shadow-glow);
+    flex-shrink: 0;
+    transition: transform var(--transition);
+}
+
+.hero-section:hover .profile-img {
+    transform: scale(1.03) rotate(1deg);
+}
+
+.hero-text h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #ffffff, var(--clr-text-secondary));
+    
+    /* Tambahkan baris di bawah ini */
+    -webkit-background-clip: text;
+    background-clip: text; /* <--- Solusi pengilang warning */
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- General Section Typography --- */
+article h2, section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+article h2::after, section h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--clr-border-strong), transparent);
+}
+
+/* --- Card Wrapper (Futuristic Glass Panels) --- */
+article, section {
+    background: var(--clr-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    padding: 2.2rem 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition);
+}
+
+article:hover, section:hover {
+    border-color: var(--clr-border-strong);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* --- Futuristic Table Styling --- */
+.edu-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.edu-table th {
+    font-family: 'Orbitron', sans-serif;
+    padding: 1rem;
+    color: var(--clr-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--clr-border);
+    background: transparent;
+}
+
+.edu-table td {
+    padding: 1rem;
+    background: var(--clr-surface-alt);
+    border-top: 1px solid var(--clr-border);
+    border-bottom: 1px solid var(--clr-border);
+    color: var(--clr-text-primary);
+    transition: all var(--transition);
+}
+
+.edu-table td:first-child {
+    border-left: 1px solid var(--clr-border);
+    border-top-left-radius: var(--radius-sm);
+    border-bottom-left-radius: var(--radius-sm);
+}
+
+.edu-table td:last-child {
+    border-right: 1px solid var(--clr-border);
+    border-top-right-radius: var(--radius-sm);
+    border-bottom-right-radius: var(--radius-sm);
+}
+
+.edu-table tr:hover td {
+    background: rgba(0, 242, 254, 0.05);
+    border-color: var(--clr-border-strong);
+    color: #ffffff;
+}
+
+/* --- Contact Form --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-text-secondary);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background-color: var(--clr-surface-alt);
+    transition: all var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--clr-accent);
+    box-shadow: var(--shadow-glow);
+    background-color: rgba(4, 5, 15, 0.8);
+}
+
+.btn-submit {
+    width: 100%;
+    background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-hover));
+    color: var(--clr-text-inverted);
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.btn-submit:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+/* --- Todo App Wrapper (Sleek List) --- */
+.todo-wrapper {
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.todo-wrapper h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+}
+
+.todo-wrapper h2::after {
+    display: none;
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.todo-input-group input {
+    flex: 1;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background-color: var(--clr-surface-alt);
+    transition: all var(--transition);
+}
+
+.todo-input-group input:focus {
+    border-color: var(--clr-accent);
+    box-shadow: var(--shadow-glow);
+    background-color: rgba(4, 5, 15, 0.8);
+}
+
+.todo-input-group button {
+    background: linear-gradient(90deg, var(--clr-accent), var(--clr-accent-hover));
+    color: var(--clr-text-inverted);
+    padding: 0.85rem 1.4rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.todo-input-group button:hover {
+    box-shadow: var(--shadow-glow);
+}
+
+#todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+}
+
+.todo-item.completed {
+    background-color: rgba(16, 185, 129, 0.06); /* Cyber Green Muted */
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.todo-item.normal {
+    background-color: var(--clr-surface-alt);
+}
+
+.todo-item.normal:hover {
+    border-color: var(--clr-border-strong);
+    background-color: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0 0 8px rgba(0, 242, 254, 0.05);
+}
+
+.todo-text {
+    flex: 1;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: color var(--transition);
+}
+
+.todo-text.done {
+    text-decoration: line-through;
+    color: var(--clr-text-secondary);
+    opacity: 0.5;
+}
+
+.todo-delete-btn {
+    background: none;
+    border: none;
+    color: var(--clr-text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 0.75rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition);
+    line-height: 1;
+}
+
+.todo-delete-btn:hover {
+    color: #ff4a4a;
+    background-color: rgba(255, 74, 74, 0.1);
+}
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-top: 1px solid var(--clr-border);
+    margin-top: 4rem;
+}
+
+.main-footer p {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--clr-text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
